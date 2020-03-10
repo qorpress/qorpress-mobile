@@ -1,3 +1,13 @@
+.refs
+.refs/
+.refs/*
+.refs/**
+
+node_modules
+node_modules/
+node_modules/*
+node_modules/**
+
 # Logs
 logs
 *.log
@@ -102,3 +112,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+.refs
+.refs/
+.refs/*
+.refs/**
+
+.DS_Store
