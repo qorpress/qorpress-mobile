@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <div class="container">
+			<div class="loader text-center" v-show="loading">
+				<h3><i class="fa fa-3x fa-spinner fa-spin"></i> Loading...</h3>
+			</div>
+		</div>
+    <div class="container" v-html="page.content.rendered"></div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      loading: true,
+      page: []
+    }
+  },
+  created() {
+		axios.get('https://eedama.org/wp-json/wp/v2/pages/'+this.$route.params.id+'?_embed')
+		.then((response) => {
+			this.page = response.data;
+			console.log(this.page.content.rendered)
+			this.loading = false;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+  }
+}
+</script>
